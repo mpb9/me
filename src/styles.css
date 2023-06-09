@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "sci-fi header";
+  src: url(./app/fonts/BrunoAceSC-Regular.ttf);
+}
+@font-face {
+  font-family: "sci-fi main";
+  src: url(./app/fonts/Gruppo-Regular.ttf);
+}
+@font-face {
+  font-family: "super weird";
+  src: url(./app/fonts/static/Nabla-Regular.ttf);
+}
+@font-face {
+  font-family: "dots";
+  src: url(./app/fonts/Codystar-Regular.ttf);
+}
+@font-face {
+  font-family: "dots light";
+  src: url(./app/fonts/Codystar-Light.ttf);
+}
+@font-face {
+  font-family: "speedy";
+  src: url(./app/fonts/FasterOne-Regular.ttf);
+}
+@font-face {
+  font-family: "video game";
+  src: url(./app/fonts/PressStart2P-Regular.ttf);
+}
+
+body {
+  background-color: rgb(209, 214, 210);
+  font-family: "sci-fi main", monospace;
+}
+
+.og-dope-thing {
+  margin: 10px 0;
+  color: #fff;
+  background: linear-gradient(
+      90deg,
+      rgba(131, 58, 180, 1) 0%,
+      rgba(253, 29, 29, 0.6) 60%,
+      rgba(252, 176, 69, 1) 100%
+    ),
+    radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 28%);
+  border: 20px dashed black;
+  padding: 20px;
+  width: 400px;
+  background-origin: padding-box, content-box;
+  background-repeat: no-repeat;
+}

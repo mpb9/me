@@ -1,0 +1,12 @@
+/* :host {
+  background-color: blue;
+  display: block;
+} */
+.page {
+  margin: 0 auto;
+  display: inline-block;
+  padding: 0px;
+  width: 81%;
+  min-height: 100vh;
+  height: max-content;
+}

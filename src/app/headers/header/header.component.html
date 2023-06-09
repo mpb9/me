@@ -1,0 +1,61 @@
+<nav
+  class="navbar navbar-default game-play"
+  style="
+    width: 19%;
+    display: inline-block;
+    vertical-align: top;
+    min-height: 99vh;
+    height: max-content;
+    border-top: 1px solid gray;
+    z-index: 5;
+  "
+>
+  <div class="container-fluid" style="padding: 0px; width: 100%">
+    <div class="navbar-header" style="text-align: center; width: 100%">
+      <div class="row arcade-top">
+        <div routerLink="ADD_LINK" class="high-score">
+          <a routerLink="ADD_LINK" class="navbar-brand">MPB</a>
+        </div>
+      </div>
+      <ul class="all-options" style="width: 100%; display: inline-block">
+        <li
+          class="main-option"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a routerLink="ADD_LINK">something</a>
+          <div class="option-menu">
+            <ul>
+              <li class="sub-option">
+                <a routerLink="ADD_LINK"><b>haosdad asdas</b></a>
+              </li>
+              <li class="sub-option">
+                <a routerLink="ADD_LINK"><b>asdas</b></a>
+              </li>
+              <li class="sub-option">
+                <a routerLink="ADD_LINK"><b>had asdaoufh as asdas</b></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li
+          class="main-option"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a routerLink="cool_stuff"> cool_stuff </a>
+          <div class="option-menu">
+            <ul>
+              <li class="sub-option">
+                <a routerLink="ADD_LINK">Haisodh ajksd</a>
+              </li>
+              <li class="sub-option">
+                <a routerLink="ADD_LINK">asdksd</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

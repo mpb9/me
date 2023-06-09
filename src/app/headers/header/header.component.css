@@ -1,0 +1,156 @@
+.arcade-top {
+  margin: -1px 0px 0px -1px;
+  padding: 7px 5px;
+  width: 105%;
+  border-top: 5px solid gray;
+  border-left: 3px solid gray;
+  border-bottom: 2px solid gray;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 7%;
+  border-bottom-right-radius: 4%;
+  border-bottom-left-radius: 10%;
+  background-color: saddlebrown;
+  box-shadow: 0px 3px rgba(70, 227, 255, 0.25);
+}
+
+.high-score {
+  margin: 3px 0px 4px 2px;
+  width: 93%;
+  display: inline-block;
+  background: radial-gradient(
+    circle,
+    rgb(232, 222, 255) 0%,
+    rgb(22, 13, 66) 28%
+  );
+  border: 4px dashed rgb(40, 191, 48);
+  background-origin: padding-box, content-box;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.high-score:hover {
+  background: radial-gradient(circle, rgb(197, 0, 0) 0%, rgb(0, 0, 0) 28%);
+  border: 4px solid rgb(184, 8, 8);
+  box-shadow: 0px 0px 5px 2px rgb(245, 71, 71);
+  cursor: pointer;
+}
+.high-score > a {
+  letter-spacing: 7px;
+  font-family: "video game";
+  color: rgba(56, 216, 72, 0.95);
+  font-size: 32px;
+  margin: 0 auto;
+  text-align: center;
+  float: none;
+  display: inline-block;
+}
+.high-score:hover > a {
+  color: rgba(237, 44, 44, 0.85);
+  text-shadow: -1px -1px 1px rgb(255, 75, 75), 0 0 0.2em rgb(255, 75, 75),
+    0 0 0.8em rgb(255, 75, 75);
+}
+
+.game-play {
+  margin: 0 auto;
+  background-image: linear-gradient(
+      rgba(64, 0, 255, 0.3),
+      rgba(183, 255, 0, 0.15)
+    ),
+    url(../../images/centipede-test.jpg);
+  background-size: 100% 100%;
+  border-radius: 0px;
+  border-top: 1px solid rgb(29, 5, 102);
+  border-left: 5px solid grey;
+  border-bottom: 2px solid saddlebrown;
+  border-right: 2px solid grey;
+  box-shadow: 5px -3px 2px rgba(139, 69, 19, 0.8) inset,
+    -2px 0px 6px rgba(139, 69, 19, 0.8) inset, 1px 0px 8px rgb(39, 38, 44),
+    0px 30px 15px rgb(0, 0, 0), 5px 35px 15px rgb(39, 38, 44);
+}
+
+.all-options {
+  padding: 0px;
+  list-style: none;
+}
+.main-option > a {
+  margin-top: 5px;
+  font-family: "sci-fi header";
+  display: inline-block;
+  color: yellow;
+  font-weight: 900;
+  font-size: 21px;
+}
+.main-option > a:hover {
+  font-style: italic;
+  text-decoration: none;
+  text-shadow: -1px -1px 1px rgb(255, 255, 255), 0 0 0.2em rgb(218, 204, 194),
+    0 0 0.8em rgb(105, 8, 100);
+}
+
+@counter-style dice {
+  system: additive;
+  additive-symbols: 6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀;
+  suffix: " ";
+}
+
+.option-menu {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0px;
+  display: inline-block;
+  width: 88%;
+}
+.option-menu > ul {
+  display: inline-block;
+  width: 90%;
+  padding: 0px 5px 0px 5%;
+  color: yellow;
+  background-color: rgba(132, 102, 174, 0.8);
+  border: 1px solid;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.sub-option {
+  list-style: none;
+  list-style-position: inside;
+  text-align: left;
+  font-size: 18px;
+  display: block;
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.sub-option::-webkit-scrollbar {
+  display: none;
+}
+.sub-option > a {
+  list-style-type: dice;
+  color: yellow;
+  text-shadow: 0px 0px 3px rgb(70, 13, 113);
+  white-space: nowrap;
+  display: list-item;
+}
+.sub-option > a:hover {
+  font-weight: 900;
+  color: white;
+  text-decoration: none;
+  text-shadow: -1px -1px 1px rgb(255, 255, 255), 0 0 0.2em rgb(218, 204, 194),
+    0 0 0.8em rgb(105, 8, 100);
+}
+.sub-option > a > b {
+  font-size: 21px;
+  color: rgb(202, 70, 238);
+}
+
+.active-link > a {
+  background-image: repeating-linear-gradient(
+    0deg,
+    orange,
+    aquamarine 45%,
+    orange
+  );
+  text-shadow: -1px -1px 1px orange, 0 0 0.2em rgb(105, 48, 8),
+    0 0 0.2em rgb(105, 48, 8);
+  font-weight: 900;
+  font-size: larger;
+}
