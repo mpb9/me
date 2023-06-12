@@ -1,0 +1,62 @@
+<div class="page">
+  <div class="title-row">Movies</div>
+  <div class="sub-pages">
+    <div class="sub-page-row">
+      <div class="sub-title" (click)="changeQueryType()">
+        {{ queryType }}
+      </div>
+      <div
+        class="query-content"
+        style="text-align: center"
+        *ngIf="queryType === 'discover'"
+      >
+        <div class="query-row" style="margin-bottom: 5px">
+          Sort by:
+          <select (change)="changeSortParam($event)">
+            <option value="popularity">Popularity</option>
+            <option value="vote_average">Rating</option>
+            <option value="release_date">Release Date</option>
+            <option value="revenue">Revenue</option>
+            <option value="vote_count"># of Ratings</option>
+          </select>
+          Order by:
+          <select (change)="changeSortOrder($event)">
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
+          </select>
+        </div>
+        <div class="query-row" *ngFor="let param of current_discover.params">
+          <div class="query-label" (click)="removeParam(param)">
+            {{ param[0] }}
+          </div>
+          <input
+            class="query-input"
+            placeholder=""
+            type="text"
+            [(ngModel)]="param[1]"
+          />
+        </div>
+        <div class="query-row">
+          Add Param:
+          <select (change)="addParam($event)">
+            <option value="include_video">Video</option>
+            <option value="language">Language</option>
+            <option value="region">Region</option>
+            <option value="release_date_gte">Release Date (gte)</option>
+            <option value="release_date_lte">Release Date (lte)</option>
+            <option value="vote_average_gte">Rating (gte)</option>
+            <option value="vote_average_lte">Rating (lte)</option>
+            <option value="vote_count_gte"># of Ratings (gte)</option>
+            <option value="vote_count_lte"># of Ratings (lte)</option>
+            <option value="with_origin_country">Origin Country</option>
+            <option value="with_people">People</option>
+            <option value="with_runtime_gte">Runtime (gte)</option>
+            <option value="with_runtime_lte">Runtime (lte)</option>
+            <option value="year">Year</option>
+          </select>
+          <button class="go-button" (click)="discover()">Discover</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

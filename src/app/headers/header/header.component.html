@@ -7,25 +7,25 @@
         </div>
       </div>
       <ul class="all-options">
-        <li
-          class="main-option"
-          routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
+        <li class="main-option" routerLinkActive="active-link">
           <a routerLink="to_do">to-do</a>
           <div class="option-menu">
             <ul>
               <li class="sub-option" *ngFor="let task of to_do; index as i">
                 <a (click)="toDone(task.rank)" *ngIf="i < 2"
                   ><b>{{ task.category }}</b>
-                  <div>
+                  <div style="cursor: pointer; text-shadow: none">
                     {{ task.description }}
                   </div></a
                 >
                 <a
                   (click)="toDone(task.rank)"
                   *ngIf="i == 2"
-                  style="padding-bottom: 4px"
+                  style="
+                    padding-bottom: 4px;
+                    cursor: pointer;
+                    text-shadow: none;
+                  "
                   ><b>{{ task.category }}</b>
                   <div>
                     {{ task.description }}
@@ -35,11 +35,7 @@
             </ul>
           </div>
         </li>
-        <li
-          class="main-option"
-          routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
+        <li class="main-option" routerLinkActive="active-link">
           <a routerLink="links">links</a>
           <div class="option-menu">
             <ul>
@@ -55,43 +51,74 @@
             </ul>
           </div>
         </li>
-        <li
-          class="main-option"
-          routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
+        <li class="main-mini-option" routerLinkActive="active-mini-main-link">
+          <a routerLink="favs">fav stuff</a>
+          <div class="mini-menu">
+            <ul>
+              <li class="mini-menu-option" style="margin-top: 3px">
+                <a
+                  routerLink="favs/movies"
+                  routerLinkActive="active-mini-link"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  >movies</a
+                >
+              </li>
+              <li class="mini-menu-option">
+                <a
+                  routerLink="favs/tv"
+                  routerLinkActive="active-mini-link"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  >tv</a
+                >
+              </li>
+              <li class="mini-menu-option">
+                <a
+                  routerLink="favs/music"
+                  routerLinkActive="active-mini-link"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  >music</a
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="main-option" routerLinkActive="active-link">
           <a routerLink="credentials">credentials</a>
           <div class="option-menu">
             <ul>
               <li class="sub-option" *ngFor="let login of logins; index as i">
-                <a routerLink="credentials" *ngIf="i < 2"
-                  ><b>{{ login.website.slice(12) }}</b>
-                  <div>{{ login.username }} : {{ login.password }}</div></a
+                <a *ngIf="i < 2"
+                  ><b (click)="openLoginURL(i)">{{ login.website }}</b>
+                  <div (click)="copyToClipboard(login.username)">
+                    {{ login.username }}
+                  </div>
+                  <div (click)="copyToClipboard(login.password)">
+                    {{ login.password }}
+                  </div></a
                 >
-                <a
-                  routerLink="credentials"
-                  *ngIf="i == 2"
-                  style="padding-bottom: 4px"
-                  ><b>{{ login.website.slice(12) }}</b>
-                  <div>{{ login.username }} : {{ login.password }}</div></a
+                <a *ngIf="i == 2" style="padding-bottom: 4px"
+                  ><b (click)="openLoginURL(i)">{{ login.website }}</b>
+                  <div (click)="copyToClipboard(login.username)">
+                    {{ login.username }}
+                  </div>
+                  <div (click)="copyToClipboard(login.password)">
+                    {{ login.password }}
+                  </div></a
                 >
               </li>
               <li
                 class="sub-option"
                 *ngFor="let info of personalInfo; index as i"
               >
-                <a routerLink="credentials" *ngIf="i < 2"
+                <a *ngIf="i < 2"
                   ><b>{{ info.name }}</b>
-                  <div>
+                  <div (click)="copyToClipboard(info.description)">
                     {{ info.description }}
                   </div></a
                 >
-                <a
-                  routerLink="credentials"
-                  *ngIf="i == 2"
-                  style="padding-bottom: 4px"
+                <a *ngIf="i == 2" style="padding-bottom: 4px"
                   ><b>{{ info.name }}</b>
-                  <div>
+                  <div (click)="copyToClipboard(info.description)">
                     {{ info.description }}
                   </div></a
                 >

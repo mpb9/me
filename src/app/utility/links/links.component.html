@@ -1,1 +1,51 @@
-<p>links works!</p>
+<div class="page">
+  <div class="title-row">Links</div>
+  <div class="create-row">
+    <div class="create-input-col">
+      <div class="create-label">Website:</div>
+      <input
+        type="text"
+        class="create-input"
+        placeholder=""
+        (change)="updateInput($event, 'name')"
+        [value]="link_input.name"
+      />
+      <div class="create-label">URL:</div>
+      <input
+        type="text"
+        class="create-input"
+        placeholder=""
+        (change)="updateInput($event, 'url')"
+        [value]="link_input.url"
+      />
+    </div>
+    <div class="create-button-col">
+      <button class="create-button" type="button" (click)="addLink()">
+        Create
+      </button>
+    </div>
+  </div>
+  <div class="content-table">
+    <table>
+      <tr>
+        <th class="content-header" (click)="sortBy('name')">Name</th>
+        <th class="content-header" (click)="sortBy('url')">URL</th>
+      </tr>
+      <tr *ngFor="let link of links; index as i">
+        <td class="content-data-2" (click)="goToLink(link.url)">
+          {{ link.name }}
+        </td>
+        <td class="content-data-2" (click)="goToLink(link.url)">
+          {{ link.url }}
+        </td>
+        <td
+          class="content-data"
+          style="width: 35px"
+          (click)="deleteLink(link.url)"
+        >
+          DELETE
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

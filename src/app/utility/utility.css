@@ -1,0 +1,168 @@
+.title-row {
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: "sci-fi ultra", monospace;
+  font-size: 25px;
+  text-decoration: underline 3px rgb(111, 62, 175);
+
+  color: rgb(84, 80, 139);
+  text-shadow: 2px -1px 1px rgb(187 110 179 / 90%),
+    1px 0px 0.1em rgb(144 255 33 / 80%), 1px 0 0.2em rgb(42 206 255);
+  cursor: default;
+}
+
+.create-row {
+  display: inline-block;
+  width: 90%;
+  padding: 0 5%;
+  height: max-content;
+  margin: 0px;
+}
+
+.create-input-col {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  height: 100%;
+}
+.create-label {
+  position: relative;
+  text-align: right;
+  color: rgb(84, 80, 139);
+  text-shadow: 1px -1px 1px rgb(187 110 179 / 90%),
+    0px 0px 0.1em rgb(144 255 33 / 80%), 1px 0 0.1em rgb(42 206 255);
+  font-weight: 900;
+  display: inline-block;
+  width: 15%;
+  font-size: 16px;
+  font-family: "sci-fi title", monospace;
+}
+.create-input {
+  margin-left: 2%;
+  display: inline-block;
+  font-family: "sci-fi main", monospace;
+  font-weight: 900;
+  width: 83%;
+  height: 30px;
+  padding: 5px 12px;
+  font-size: 14px;
+  color: rgb(84, 80, 139);
+  line-height: normal;
+  background-color: rgba(255, 220, 220, 0.5);
+  background-image: none;
+  border: 1px solid gray;
+  border-radius: 3px;
+  box-shadow: 0 0 0.1em rgb(42 206 255);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  margin-top: 2px;
+}
+.create-input:focus {
+  background-color: rgb(255, 220, 220);
+  outline: 0;
+  box-shadow: 0 0 8px rgb(84, 80, 139), inset 0 0 8px rgb(144 255 33 / 80%);
+}
+
+.create-button-col {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  margin-left: 80%;
+  width: 20%;
+  vertical-align: bottom;
+  overflow: hidden;
+}
+.create-button {
+  font-family: "sci-fi ultra", monospace;
+  text-align: left;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  color: rgb(255, 217, 224);
+  font-weight: 900;
+  font-size: 1.5vw;
+  line-height: 1;
+  padding-left: 3px;
+  text-decoration: none;
+  background-color: rgb(111, 62, 175);
+  border: 2px solid gray;
+  border-radius: 20px;
+  border-bottom-right-radius: 70px;
+  border-top-right-radius: 10px;
+}
+.create-button:hover {
+  color: white;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 217, 224);
+  background-image: linear-gradient(
+    270deg,
+    rgba(255, 176, 176, 0.05),
+    rgb(255, 255, 255) 25%,
+    rgba(255, 192, 203, 0.95)
+  );
+}
+
+.content-table {
+  display: inline-block;
+  width: 90%;
+  padding: 15px 0px 0px 5%;
+  height: max-content;
+  margin: 0px;
+  overflow-x: auto;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.content-table::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 2px solid rgba(56, 216, 72, 0.95);
+  background-color: rgba(3, 3, 3, 0.9);
+}
+th {
+  text-align: center;
+  padding: 5px 10px;
+  color: rgba(56, 216, 72, 0.95);
+  font-family: "sci-fi header", monospace;
+  border: 2px solid rgba(56, 216, 72, 0.95);
+  border-bottom: 2px solid rgba(56, 216, 72, 0.95);
+  cursor: pointer;
+}
+th:hover {
+  background-color: rgba(56, 216, 72, 0.95);
+  color: rgba(3, 3, 3, 0.9);
+}
+tr:hover > td {
+  background-color: rgba(255, 83, 40, 0.95);
+  color: rgba(3, 3, 3, 0.9);
+  cursor: not-allowed;
+}
+tr:hover > .content-data-2 {
+  background-color: rgba(56, 216, 72, 0.95);
+  color: rgba(3, 3, 3, 0.9);
+  cursor: pointer;
+}
+tr:hover > .content-copy {
+  background-color: rgba(255, 241, 43, 0.95);
+  color: rgba(3, 3, 3, 0.9);
+  cursor: copy;
+}
+td:hover {
+  text-shadow: 1px -1px 3px rgb(187 110 179);
+  font-style: italic;
+}
+
+td {
+  text-align: center;
+  padding: 5px 10px;
+  color: rgb(255, 217, 224);
+  font-weight: 900;
+  border: 1px solid rgba(255, 217, 224, 0.95);
+  background-color: rgba(50, 44, 44, 0.9);
+  max-width: 40vw;
+  word-wrap: break-word;
+}

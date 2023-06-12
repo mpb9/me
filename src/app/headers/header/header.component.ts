@@ -36,4 +36,16 @@ export class HeaderComponent implements OnInit {
     this.utilityService.deleteToDo(index);
     this.router.navigate(['']);
   }
+
+  async openLoginURL(index: number) {
+    const url = this.logins[index].url;
+    const password = this.logins[index].password;
+
+    await this.copyToClipboard(password);
+    window.open(url, '_blank');
+  }
+
+  async copyToClipboard(text: string) {
+    await navigator.clipboard.writeText(text);
+  }
 }

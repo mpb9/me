@@ -38,11 +38,16 @@ export class UtilityService {
 
   // info: Push API Data to Arrays
   pushLogins(
-    logins: { website: string; username: string; password: string }[]
+    logins: {
+      website: string;
+      url: string;
+      username: string;
+      password: string;
+    }[]
   ) {
     logins.forEach((login) => {
       this.logins.push(
-        new Login(login.website, login.username, login.password)
+        new Login(login.website, login.url, login.username, login.password)
       );
     });
     this.loginsChanged.emit(this.logins.slice());
@@ -51,7 +56,7 @@ export class UtilityService {
     to_do: {
       rank: number;
       due: string;
-      category: number;
+      category: string;
       description: string;
     }[]
   ) {
@@ -90,7 +95,80 @@ export class UtilityService {
     return this.personalInfo.slice();
   }
 
+  // info: Add to Arrays
+  addLogin(login: Login) {
+    this.logins = [];
+    axios({
+      method: 'post',
+      url: 'http://localhost/me-apis/utility/logins/add.php',
+      headers: { 'content-type': 'application/json' },
+      data: login,
+    })
+      .then((result) => {
+        console.log(result.data);
+        this.pushLogins(result.data);
+      })
+      .catch((error) => console.log(error));
+  }
+  addToDo(to_do: ToDo) {
+    this.to_do = [];
+    axios({
+      method: 'post',
+      url: 'http://localhost/me-apis/utility/to_do/add.php',
+      headers: { 'content-type': 'application/json' },
+      data: to_do,
+    })
+      .then((result) => {
+        console.log(result.data);
+        this.pushTodos(result.data);
+      })
+      .catch((error) => console.log(error));
+  }
+  addLink(link: Link) {
+    this.links = [];
+    axios({
+      method: 'post',
+      url: 'http://localhost/me-apis/utility/links/add.php',
+      headers: { 'content-type': 'application/json' },
+      data: link,
+    })
+      .then((result) => {
+        console.log(result.data);
+        this.pushLinks(result.data);
+      })
+      .catch((error) => console.log(error));
+  }
+  addPersonalInfo(personalInfo: PersonalInfo) {
+    this.personalInfo = [];
+    axios({
+      method: 'post',
+      url: 'http://localhost/me-apis/utility/personal_info/add.php',
+      headers: { 'content-type': 'application/json' },
+      data: personalInfo,
+    })
+      .then((result) => {
+        console.log(result.data);
+        this.pushPersonalInfo(result.data);
+      })
+      .catch((error) => console.log(error));
+  }
+
   // info: Remove from Arrays
+  deleteLogin(index: number) {
+    const login = this.customMethods.getCopy(this.logins[index]);
+    this.logins = [];
+    axios({
+      method: 'post',
+      url: 'http://localhost/me-apis/utility/logins/remove.php',
+      headers: { 'content-type': 'application/json' },
+      data: login,
+    })
+      .then((result) => {
+        console.log(result.data);
+        this.pushLogins(result.data);
+      })
+      .catch((error) => console.log(error));
+  }
   deleteToDo(index: number) {
     const to_done = this.customMethods.getCopy(this.to_do[index]);
     this.to_do = [];
@@ -103,6 +181,36 @@ export class UtilityService {
       .then((result) => {
         console.log(result.data);
         this.pushTodos(result.data);
+      })
+      .catch((error) => console.log(error));
+  }
+  deleteLink(index: number) {
+    const link = this.customMethods.getCopy(this.links[index]);
+    this.links = [];
+    axios({
+      method: 'post',
+      url: 'http://localhost/me-apis/utility/links/remove.php',
+      headers: { 'content-type': 'application/json' },
+      data: link,
+    })
+      .then((result) => {
+        console.log(result.data);
+        this.pushLinks(result.data);
+      })
+      .catch((error) => console.log(error));
+  }
+  deletePersonalInfo(index: number) {
+    const personalInfo = this.customMethods.getCopy(this.personalInfo[index]);
+    this.personalInfo = [];
+    axios({
+      method: 'post',
+      url: 'http://localhost/me-apis/utility/personal_info/remove.php',
+      headers: { 'content-type': 'application/json' },
+      data: personalInfo,
+    })
+      .then((result) => {
+        console.log(result.data);
+        this.pushPersonalInfo(result.data);
       })
       .catch((error) => console.log(error));
   }

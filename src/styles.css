@@ -7,6 +7,14 @@
   src: url(./app/fonts/Gruppo-Regular.ttf);
 }
 @font-face {
+  font-family: "sci-fi ultra";
+  src: url(./app/fonts/sofachrome_rg.otf);
+}
+@font-face {
+  font-family: "sci-fi curvy";
+  src: url(./app/fonts/LOOPSOFW.TTF);
+}
+@font-face {
   font-family: "super weird";
   src: url(./app/fonts/static/Nabla-Regular.ttf);
 }
@@ -37,6 +45,14 @@ body {
     rgb(209, 214, 210) 100%
   );
   font-family: "sci-fi main", monospace;
+}
+
+.page {
+  min-height: 94vh;
+  max-height: max-content;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
 }
 
 .og-dope-thing {

@@ -67,7 +67,6 @@
   width: 19%;
   display: inline-block;
   vertical-align: top;
-
   height: 99vh;
   border-top: 1px solid gray;
   z-index: 5;
@@ -148,6 +147,7 @@
   text-shadow: 0px 0px 3px rgb(70, 13, 113);
   white-space: nowrap;
   display: list-item;
+  cursor: pointer;
 }
 .sub-option > a:hover {
   font-weight: 900;
@@ -168,22 +168,126 @@
   margin-left: 14px;
   text-align: left;
   color: rgb(245 208 255);
-  cursor: default;
+  cursor: copy;
+  text-shadow: none;
 }
-
+.sub-option > a > div:hover {
+  text-shadow: -1px -1px 1px rgb(255, 255, 255), 0 0 0.2em rgb(218, 204, 194),
+    0 0 0.8em rgb(105, 8, 100);
+}
 .active-link > a {
   background-image: repeating-linear-gradient(
     0deg,
-    rgba(255, 255, 0, 0.9),
-    rgb(245 208 255) 30%,
-    rgba(255, 165, 0, 0.1)
+    rgba(255, 225, 0, 0.9),
+    rgb(245 208 255) 25%,
+    rgba(255, 165, 0, 0)
   );
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 1px 5px;
   text-shadow: -1px -1px 1px orange, 0 0 0.2em rgb(105, 48, 8),
     0 0 0.2em rgb(105, 48, 8);
   font-weight: 900;
   font-size: larger;
   text-decoration: none;
+  cursor: default;
+}
+.active-link > a:hover {
+  font-style: normal;
+  text-shadow: -1px -1px 1px orange, 0 0 0.2em rgb(105, 48, 8),
+    0 0 0.2em rgb(105, 48, 8);
+}
+
+.main-mini-option > a {
+  margin-top: 0px;
+  font-family: "sci-fi header";
+  display: inline-block;
+  color: yellow;
+  font-weight: 900;
+  font-size: 18px;
+}
+.main-mini-option > a:hover {
+  font-style: italic;
+  text-decoration: none;
+  text-shadow: -1px -1px 1px rgb(255, 255, 255), 0 0 0.2em rgb(218, 204, 194),
+    0 0 0.8em rgb(37, 105, 8);
+}
+.active-mini-main-link > a {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 225, 0, 0.9),
+    rgba(34, 197, 53, 0.95) 45%,
+    rgba(255, 165, 0, 0)
+  );
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 1px 5px;
+  text-shadow: -1px -1px 1px orange, 0 0 0.2em rgb(105, 48, 8),
+    0 0 0.2em rgb(105, 48, 8);
+  font-weight: 900;
+  font-size: larger;
+  text-decoration: none;
+}
+.active-mini-main-link > a:hover {
+  font-style: normal;
+  text-shadow: none;
+}
+.mini-menu {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0px;
+  display: inline-block;
+  width: 65%;
+}
+.mini-menu > ul {
+  display: inline-block;
+  width: 95%;
+  padding: 0px 5px 4px 3%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 0, 0.9),
+    rgba(255, 115, 0, 0.8) 70%
+  );
+  color: rgba(119, 110, 132, 0.9);
+  border: 1px solid yellow;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.mini-menu-option {
+  list-style: none;
+  list-style-position: inside;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.1;
+  display: block;
+  margin-bottom: -1px;
+  margin-top: -3px;
+}
+.mini-menu-option > a {
+  color: rgb(34, 197, 72);
+  font-family: "sci-fi header", monospace;
+  font-weight: 900;
+}
+.mini-menu-option > a:hover {
+  text-decoration: none;
+  font-style: italic;
+  text-shadow: -1px -1px 1px rgb(65, 104, 19), 0 0 0.8em rgb(105, 90, 8),
+    0 0 1em rgb(204, 201, 185);
+}
+.active-mini-link {
+  cursor: default;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 0.75) 75%
+  );
+  box-shadow: 0 0 0.2em rgb(214, 255, 196), 0 0 2em black;
+  text-shadow: -1px -1px 1px rgb(65, 104, 19), 0 0 0.8em rgb(105, 90, 8),
+    0 0 1em rgb(204, 201, 185);
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 0px 5px;
+  line-height: 1.4;
+  font-style: italic;
 }

@@ -1,1 +1,66 @@
-<p>to-do works!</p>
+<div class="page">
+  <div class="title-row">To-Do</div>
+  <div class="create-row">
+    <div class="create-input-col">
+      <div class="create-label">Rank:</div>
+      <input
+        type="text"
+        class="create-input"
+        placeholder=""
+        (change)="updateInput($event, 'rank')"
+        [value]="to_do_input.rank === 0 ? '' : to_do_input.rank"
+      />
+      <div class="create-label">Due:</div>
+      <input
+        type="text"
+        class="create-input"
+        placeholder=""
+        (change)="updateInput($event, 'due')"
+        [value]="to_do_input.due"
+      />
+      <div class="create-label">Category:</div>
+      <input
+        type="text"
+        class="create-input"
+        placeholder=""
+        (change)="updateInput($event, 'category')"
+        [value]="to_do_input.category"
+      />
+      <div class="create-label">Description:</div>
+      <input
+        type="text"
+        class="create-input"
+        placeholder=""
+        (change)="updateInput($event, 'description')"
+        [value]="to_do_input.description"
+      />
+    </div>
+    <div class="create-button-col">
+      <button class="create-button" type="button" (click)="addToDo()">
+        Create
+      </button>
+    </div>
+  </div>
+  <div class="content-table">
+    <table>
+      <tr>
+        <th class="content-header" (click)="sortBy('rank', 1)">Rank</th>
+        <th class="content-header" (click)="sortBy('due', 1)">Due</th>
+        <th class="content-header" (click)="sortBy('category', 1)">Category</th>
+        <th class="content-header">Description</th>
+      </tr>
+      <tr *ngFor="let task of to_do" (click)="toDone(task.rank)">
+        <td class="content-data">
+          {{ task.rank }}
+        </td>
+        <td class="content-data">
+          {{ task.due }}
+        </td>
+        <td class="content-data">
+          {{ task.category }}
+        </td>
+        <td class="content-data">{{ task.description }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

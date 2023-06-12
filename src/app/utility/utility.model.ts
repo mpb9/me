@@ -1,6 +1,7 @@
 export class Login {
   constructor(
     public website: string,
+    public url: string,
     public username: string,
     public password: string
   ) {}
@@ -10,7 +11,7 @@ export class ToDo {
   constructor(
     public rank: number,
     public due: string,
-    public category: number,
+    public category: string,
     public description: string
   ) {}
 }
