@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './headers/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LilHeaderComponent } from './headers/lil-header/lil-header.component';
+import { CredentialsComponent } from './utility/credentials/credentials.component';
+import { ToDoComponent } from './utility/to-do/to-do.component';
+import { LinksComponent } from './utility/links/links.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +16,9 @@ import { LilHeaderComponent } from './headers/lil-header/lil-header.component';
     HeaderComponent,
     HomeComponent,
     LilHeaderComponent,
+    CredentialsComponent,
+    ToDoComponent,
+    LinksComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

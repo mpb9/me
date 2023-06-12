@@ -58,38 +58,49 @@
     url(../../images/centipede-test.jpg);
   background-size: 100% 100%;
   border-radius: 0px;
-  border-top: 1px solid rgb(29, 5, 102);
   border-left: 5px solid grey;
   border-bottom: 2px solid saddlebrown;
   border-right: 2px solid grey;
   box-shadow: 5px -3px 2px rgba(139, 69, 19, 0.8) inset,
     -2px 0px 6px rgba(139, 69, 19, 0.8) inset, 1px 0px 8px rgb(39, 38, 44),
-    0px 30px 15px rgb(0, 0, 0), 5px 35px 15px rgb(39, 38, 44);
+    0px 10px 15px rgb(0, 0, 0), 5px 30px 15px rgb(39, 38, 44);
+  width: 19%;
+  display: inline-block;
+  vertical-align: top;
+
+  height: 99vh;
+  border-top: 1px solid gray;
+  z-index: 5;
 }
 
 .all-options {
   padding: 0px;
   list-style: none;
+  margin-top: 5px;
+  height: 83vh;
+  width: 100%;
+  display: inline-block;
+  overflow-y: scroll;
+  overflow-x: visible;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.all-options::-webkit-scrollbar {
+  display: none;
 }
 .main-option > a {
-  margin-top: 5px;
+  margin-top: 0px;
   font-family: "sci-fi header";
   display: inline-block;
   color: yellow;
   font-weight: 900;
-  font-size: 21px;
+  font-size: 18px;
 }
 .main-option > a:hover {
   font-style: italic;
   text-decoration: none;
   text-shadow: -1px -1px 1px rgb(255, 255, 255), 0 0 0.2em rgb(218, 204, 194),
     0 0 0.8em rgb(105, 8, 100);
-}
-
-@counter-style dice {
-  system: additive;
-  additive-symbols: 6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀;
-  suffix: " ";
 }
 
 .option-menu {
@@ -101,21 +112,29 @@
 }
 .option-menu > ul {
   display: inline-block;
-  width: 90%;
-  padding: 0px 5px 0px 5%;
+  width: 95%;
+  padding: 0px 5px 4px 3%;
   color: yellow;
-  background-color: rgba(132, 102, 174, 0.8);
-  border: 1px solid;
+  background-color: rgba(119, 110, 132, 0.9);
+  border: 1px solid yellow;
   border-radius: 3px;
   overflow: hidden;
+}
+
+@counter-style dice {
+  system: additive;
+  additive-symbols: 6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀;
+  suffix: " ";
 }
 
 .sub-option {
   list-style: none;
   list-style-position: inside;
   text-align: left;
-  font-size: 18px;
+  font-size: 14px;
   display: block;
+  margin-bottom: -1px;
+  margin-top: -3px;
   overflow-x: scroll;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
@@ -138,19 +157,33 @@
     0 0 0.8em rgb(105, 8, 100);
 }
 .sub-option > a > b {
-  font-size: 21px;
-  color: rgb(202, 70, 238);
+  font-size: 16px;
+  color: rgb(69 12 85);
+}
+.sub-option > a > div {
+  padding: 0px;
+  font-size: 14px;
+  font-style: italic;
+  margin-top: -8px;
+  margin-left: 14px;
+  text-align: left;
+  color: rgb(245 208 255);
+  cursor: default;
 }
 
 .active-link > a {
   background-image: repeating-linear-gradient(
     0deg,
-    orange,
-    aquamarine 45%,
-    orange
+    rgba(255, 255, 0, 0.9),
+    rgb(245 208 255) 30%,
+    rgba(255, 165, 0, 0.1)
   );
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 1px 5px;
   text-shadow: -1px -1px 1px orange, 0 0 0.2em rgb(105, 48, 8),
     0 0 0.2em rgb(105, 48, 8);
   font-weight: 900;
   font-size: larger;
+  text-decoration: none;
 }

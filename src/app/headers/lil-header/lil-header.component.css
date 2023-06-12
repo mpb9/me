@@ -1,7 +1,7 @@
 .my-nav {
   background-color: grey;
   background-image: url(../../images/colorful-dots.png);
-  border-top: 1px solid grey;
+  border: none;
   margin: 0 auto;
   border-radius: 0px;
   height: 100%;
@@ -9,6 +9,7 @@
   background-size: 40% 400%;
   overflow: hidden;
   padding: 0px;
+  box-shadow: 5px 0px 15px rgb(22, 13, 66);
 }
 
 .my-nav > div > div > ul > li {
@@ -21,7 +22,7 @@
   color: rgb(22, 13, 66);
   font-size: 25px;
   font-family: "speedy";
-  padding-top: 1vh;
+  padding-top: 1.4vh;
   padding-right: 30px;
   padding-left: 10px;
   height: 100%;

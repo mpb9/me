@@ -27,8 +27,15 @@
   src: url(./app/fonts/PressStart2P-Regular.ttf);
 }
 
+/* background-color: rgb(209, 214, 210);
+ */
 body {
-  background-color: rgb(209, 214, 210);
+  background: linear-gradient(
+    0deg,
+    rgb(150 130 163) 0%,
+    rgba(170, 136, 136, 0.6) 60%,
+    rgb(209, 214, 210) 100%
+  );
   font-family: "sci-fi main", monospace;
 }
 
