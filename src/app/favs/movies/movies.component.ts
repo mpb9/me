@@ -42,12 +42,8 @@ export class MoviesComponent implements OnInit {
     });
   }
 
-  changeQueryType() {
-    if (this.queryType === 'discover') {
-      this.queryType = 'search';
-    } else {
-      this.queryType = 'discover';
-    }
+  changeQueryType(event: any) {
+    this.queryType = event.target.value;
   }
 
   changeSortParam(event: any) {

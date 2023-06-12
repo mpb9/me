@@ -2,15 +2,22 @@
   <div class="title-row">Movies</div>
   <div class="sub-pages">
     <div class="sub-page-row">
-      <div class="sub-title" (click)="changeQueryType()">
-        {{ queryType }}
+      <div class="sub-title">
+        <select (change)="changeQueryType($event)">
+          <option value="discover">Discover</option>
+          <option value="search">Search</option>
+        </select>
+        <select (change)="">
+          <option value="discover">Discover</option>
+          <option value="search">Search</option>
+        </select>
       </div>
       <div
         class="query-content"
         style="text-align: center"
         *ngIf="queryType === 'discover'"
       >
-        <div class="query-row" style="margin-bottom: 5px">
+        <div class="query-row" style="width: 90%; margin: 0px 5% 5px 5%">
           Sort by:
           <select (change)="changeSortParam($event)">
             <option value="popularity">Popularity</option>
@@ -24,6 +31,7 @@
             <option value="desc">Descending</option>
             <option value="asc">Ascending</option>
           </select>
+          <button class="go-button" (click)="discover()">Discover</button>
         </div>
         <div class="query-row" *ngFor="let param of current_discover.params">
           <div class="query-label" (click)="removeParam(param)">
@@ -54,7 +62,6 @@
             <option value="with_runtime_lte">Runtime (lte)</option>
             <option value="year">Year</option>
           </select>
-          <button class="go-button" (click)="discover()">Discover</button>
         </div>
       </div>
     </div>
