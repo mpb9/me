@@ -12,6 +12,7 @@ import { LinksComponent } from './utility/links/links.component';
 import { MoviesComponent } from './favs/movies/movies.component';
 import { FavsComponent } from './favs/favs.component';
 import { FormsModule } from '@angular/forms';
+import { MoviesResultsComponent } from './favs/movies/movies-results/movies-results.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     LinksComponent,
     MoviesComponent,
     FavsComponent,
+    MoviesResultsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

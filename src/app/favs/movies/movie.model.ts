@@ -18,7 +18,7 @@ export class Discover {
 
   reset() {
     this.sort.reset();
-    this.params = [['include_video', 'false']];
+    this.params = this.valid_params.map((param) => [param, '']);
   }
 
   updateParams(param: string, value: any) {
@@ -60,44 +60,26 @@ export class Discover {
 }
 
 export class MovieSearch {
-  constructor(public query: string, public params: any[]) {}
-
-  toString() {
-    let query_string = `query=${this.query}&include_adult=false`;
-    this.valid_params.forEach((param) => {
-      if (this.params.includes(param)) {
-        query_string += `&${param}=${
-          this.params.find((p) => p[0] === param)[1]
-        }`;
-      }
-    });
-    return query_string;
-  }
+  constructor(
+    public query: string,
+    public language: string,
+    public year: number | null
+  ) {}
 
   reset() {
-    this.params = [];
+    this.query = '';
+    this.language = '';
+    this.year = null;
   }
-
-  updateParams(param: string, value: any) {
-    if (this.params.includes([param, value])) {
-      this.params.splice(this.params.indexOf([param, value]), 1);
-    }
-    if (this.valid_params.includes(param)) {
-      this.params.push([param, value]);
-    }
-  }
-
-  deleteParam(param: string) {
-    if (this.params.includes(param)) {
-      this.params.splice(this.params.indexOf(param), 1);
-    }
-  }
-
   updateQuery(query: string) {
     this.query = query;
   }
-
-  valid_params = ['language', 'primary_release_year', 'page', 'region', 'year'];
+  updateLanguage(language: string) {
+    this.language = language;
+  }
+  updateYear(year: number) {
+    this.year = year;
+  }
 }
 
 export class PersonSearch {
@@ -161,6 +143,58 @@ export class Sort {
 
   valid_orders = ['asc', 'desc'];
 }
+
+export class Movie {
+  constructor(
+    public adult: boolean,
+    public backdrop_path: string,
+    public belongs_to_collection: number | null,
+    public budget: number,
+    public genres: { id: number; name: string }[],
+    public homepage: string,
+    public id: number,
+    public imdb_id: string | null,
+    public original_language: string,
+    public original_title: string,
+    public overview: string,
+    public popularity: number,
+    public poster_path: string,
+    public production_companies: {
+      id: number;
+      logo_path: string | null;
+      name: string;
+      origin_country: string;
+    }[],
+    public production_countries: { iso_3166_1: string; name: string }[],
+    public release_date: string,
+    public revenue: number,
+    public runtime: number,
+    public spoken_languages: {
+      english_name: string;
+      iso_639_1: string;
+      name: string;
+    }[],
+    public status: string,
+    public tagline: string,
+    public title: string,
+    public vote_average: number,
+    public vote_count: number
+  ) {}
+}
+
+export const SORT_OPTIONS = {
+  params: [
+    { value: 'popularity', display_1: 'popular', display_2: 'popularity' },
+    { value: 'vote_average', display_1: 'rating', display_2: 'rating' },
+    { value: 'release_date', display_1: 'date', display_2: 'release' },
+    { value: 'revenue', display_1: '$$$$$', display_2: 'box office' },
+    { value: 'vote_count', display_1: '# ratings', display_2: 'rate count' },
+  ],
+  orders: [
+    { value: 'desc', display: 'high ⇧' },
+    { value: 'asc', display: 'low ⇩' },
+  ],
+};
 
 export const GENRES = [
   {

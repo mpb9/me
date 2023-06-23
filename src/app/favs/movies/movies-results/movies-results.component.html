@@ -1,0 +1,18 @@
+<div class="movie-row" *ngFor="let movie of movies; index as i">
+  <div class="movie-info">
+    <div class="movie-title">{{ movie.title }}</div>
+    <div class="movie-subtitle">
+      <div class="movie-release">{{ movie.release_date }}</div>
+      <div class="movie-ratings">
+        <b>{{ movie.vote_average.toFixed(1) }}</b> ({{ movie.vote_count }})
+      </div>
+    </div>
+    <div class="movie-options">~options~</div>
+    <div class="movie-overview">{{ movie.overview }}</div>
+  </div>
+  <img
+    class="movie-poster"
+    [src]="'https://www.themoviedb.org/t/p/original' + movie.poster_path"
+    alt="poster"
+  />
+</div>

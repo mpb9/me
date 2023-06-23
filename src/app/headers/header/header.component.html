@@ -35,22 +35,6 @@
             </ul>
           </div>
         </li>
-        <li class="main-option" routerLinkActive="active-link">
-          <a routerLink="links">links</a>
-          <div class="option-menu">
-            <ul>
-              <li class="sub-option" *ngFor="let link of links; index as i">
-                <a
-                  href="{{ link.url }}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  *ngIf="i <= 10"
-                  ><b>{{ link.name }}</b>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
         <li class="main-mini-option" routerLinkActive="active-mini-main-link">
           <a routerLink="favs">fav stuff</a>
           <div class="mini-menu">
@@ -78,6 +62,22 @@
                   [routerLinkActiveOptions]="{ exact: true }"
                   >music</a
                 >
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="main-option" routerLinkActive="active-link">
+          <a routerLink="links">links</a>
+          <div class="option-menu">
+            <ul>
+              <li class="sub-option" *ngFor="let link of links; index as i">
+                <a
+                  href="{{ link.url }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  *ngIf="i <= 10"
+                  ><b>{{ link.name }}</b>
+                </a>
               </li>
             </ul>
           </div>

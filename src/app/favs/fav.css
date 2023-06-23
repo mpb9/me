@@ -1,156 +1,181 @@
 .title-row {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-family: "sci-fi ultra", monospace;
   font-size: 25px;
   text-decoration: underline 3px rgb(232, 91, 44);
-
   color: rgb(232, 91, 44);
   text-shadow: 2px -1px 1px rgba(128, 187, 110, 0.9),
     1px 0px 0.1em rgb(144 255 33 / 80%), 1px 0 0.2em yellow;
   cursor: default;
 }
 
-.sub-pages {
-  display: inline-block;
-  margin: 0px 5%;
-  background-color: rgba(255, 255, 0, 0.6);
-  width: 90%;
-  padding: 0px;
-  height: max-content;
-  border: 4px solid;
-  border-image: linear-gradient(
-      to top,
-      rgba(255, 176, 176, 0.05),
-      rgba(197, 255, 88, 0.9) 35%,
-      rgb(232, 91, 44)
-    )
-    3;
-}
-
-.sub-page-row {
+.header-row {
   display: inline-block;
   width: 100%;
-  padding: 0px 0px 0px 0px;
+  padding: 0px 2%;
   height: max-content;
-  margin: 0px;
+  font-family: "sci-fi ultra", monospace;
 }
-.sub-title {
-  width: max-content;
-  padding: 0px 3%;
-  font-family: "sci-fi curvy", monospace;
-  font-weight: 900;
-  font-size: 20px;
-  color: rgb(232, 91, 44);
-  text-shadow: 0px -1px 1px rgba(128, 187, 110, 0.9),
-    1px 0px 0.1em rgb(144 255 33 / 80%), 1px 0 0.2em yellow;
-  font-style: italic;
-  letter-spacing: 2px;
-}
-.sub-title:hover {
-  text-shadow: 0px -1px 1px rgba(63, 255, 5, 0.9),
-    1px 0px 0.1em rgb(144 255 33 / 80%), 1px 0 0.2em rgb(179, 0, 255);
-  font-style: normal;
-  cursor: pointer;
-}
-.sub-title > select {
+
+.header-select {
   display: inline-block;
   position: relative;
-  color: rgb(0, 0, 0);
+  color: rgba(28, 17, 17, 0.75);
+  background-color: rgb(232, 91, 44);
+  border: 2px solid rgb(232, 91, 44);
+  border-bottom: 0px;
+  border-radius: 8px 8px 0px 0px;
+  margin: 0px 5px;
+  cursor: pointer;
+  padding: 1px 0px;
+  text-align: center;
+  width: fit-content;
+  box-shadow: none;
+}
+.header-select:focus {
+  outline: 0;
+}
+.header-select:hover {
+  text-shadow: 1px -1px 1px rgba(208, 248, 196, 0.9),
+    1px 0px 0.1em rgba(236, 241, 231, 0.8), 1px 0 0.2em yellow;
+}
+.header-select-active {
   background-image: linear-gradient(
     0deg,
     rgb(209, 214, 210),
     rgba(197, 255, 88, 0.9) 35%,
     rgb(232, 91, 44)
   );
-  border: 1px solid #000;
-  border-bottom: 0px;
-  margin: 2px;
-  padding: 0px 5px;
+  border-radius: 0px;
 }
-
-.sub-content {
-  width: 96%;
-  margin: -5px 2% 5px 2%;
-  padding: 3px;
-  font-family: "sci-fi main", monospace;
-  font-weight: 900;
-  font-size: 16px;
-  color: rgb(232, 91, 44);
-  border: 1px solid;
-  border-radius: 1px;
-  background-color: rgb(209, 214, 210);
-  min-height: 20px;
+.option-selected {
+  display: none;
 }
-
-.create-row {
-  display: inline-block;
-  width: 90%;
-  padding: 0 5%;
-  height: max-content;
-  margin: 0px;
-}
-
-.create-input-col {
-  display: inline-block;
+.content {
   width: 100%;
-  vertical-align: top;
-  height: 100%;
-}
-
-.query-content {
-  width: 96%;
-  margin: -5px 2% 5px 2%;
+  margin: -4px 0% 5px 0%;
   padding: 5px;
   font-family: "sci-fi header", monospace;
   font-weight: 900;
   font-size: 15px;
   color: rgb(232, 91, 44);
-  border: 1px solid;
+  border: 3px solid;
   border-radius: 1px;
   background-color: rgb(209, 214, 210);
-  min-height: 20px;
 }
 
+.query-content {
+  width: 30%;
+  display: inline-block;
+  height: max-content;
+  margin: 0px;
+  padding: 5px 0px;
+  text-align: center;
+}
 .query-row {
   display: inline-block;
-  width: 80%;
+  width: 100%;
   padding: 0px;
   height: max-content;
-  margin: 3px 10%;
+  margin: 2px 1%;
   text-align: center;
 }
 .query-row > select {
   margin-right: 15px;
 }
+
+.sort-row {
+  display: inline-block;
+  width: 100%;
+  padding: 5px 0% 0px 0%;
+  height: max-content;
+  text-align: center;
+  margin: 2px 0%;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(199, 12, 112, 0.8);
+  text-shadow: 0px 1px 1px rgb(255, 255, 255),
+    1px 1px 0.1em rgba(211, 94, 26, 0.9), 0 0 0.2em yellow;
+}
+.sort {
+  margin-right: 2px;
+  padding: 0px;
+  display: inline-block;
+}
+.sort-btn {
+  height: 23px;
+  line-height: 1;
+  min-width: 100px;
+  max-width: max-content;
+  padding: 0px;
+  font-style: normal;
+  font-size: 14px;
+  background-color: rgba(255, 220, 62, 0.75);
+  color: rgb(201, 27, 120);
+  box-shadow: 3px 0px 3px rgb(255, 154, 114);
+  border: 1px solid rgb(232, 91, 44);
+  cursor: pointer;
+  color: rgba(199, 12, 112, 0.8);
+  text-shadow: 0px 1px 1px rgb(255, 255, 255),
+    1px 1px 0.1em rgba(211, 94, 26, 0.9), 0 0 0.2em yellow;
+}
+.sort-content {
+  display: none;
+  position: absolute;
+  width: 100px;
+  background-color: rgb(237 180 190);
+  color: rgb(201, 27, 120);
+  box-shadow: 3px 0px 3px rgb(255, 154, 114);
+  border: 1px solid rgb(232, 91, 44);
+  cursor: pointer;
+  z-index: 1;
+}
+.sort:hover .sort-content {
+  display: block;
+}
+.sort-content > div:hover {
+  outline: 0;
+  background-color: black;
+  color: rgb(255, 220, 62);
+  font-style: normal;
+}
+
 .go-button {
-  background-color: rgb(232, 91, 44);
-  color: rgb(255, 255, 255);
+  font-family: "video game", monospace;
+  background-color: rgb(205, 35, 126);
+  color: black;
+  border: 2px solid rgb(232, 91, 44);
   border-radius: 3px;
-  margin-left: 10px;
+  font-weight: 900;
+  margin: 0px 25%;
+  width: 50%;
 }
 .go-button:hover {
   cursor: pointer;
-  background-color: rgb(22, 50, 17);
-  color: rgb(232, 91, 44);
+  background-color: rgb(207, 221, 4);
+  color: rgb(44, 232, 44);
+  border: 2px solid rgb(44, 232, 44);
+  text-shadow: 1px -1px 1px rgba(208, 248, 196, 0.9),
+    1px 0px 0.1em rgba(236, 241, 231, 0.8), 1px 0 0.2em yellow;
 }
 .query-label {
   position: relative;
   text-align: center;
-  color: rgb(232, 91, 44);
-  text-shadow: 1px -1px 1px rgb(187 110 179 / 90%),
-    0px 0px 0.1em rgb(144 255 33 / 80%), 1px 0 0.1em rgb(42 206 255);
-  background-color: rgba(3, 3, 3, 0.9);
+  color: rgb(201, 27, 120);
+  text-shadow: 0px -1px 1px rgb(187 110 179 / 90%),
+    0px 0px 0.1em rgb(144 255 33 / 80%), 1px 0 0.1em rgb(255, 166, 42);
+  background-color: rgba(27, 12, 1, 0.99);
   display: inline-block;
   font-weight: 100;
   margin: 0px;
-  width: 35%;
+  width: 60%;
   height: 25px;
   vertical-align: middle;
   padding: 2px 5px 2px 5px;
   font-size: 13px;
   font-family: "sci-fi title", monospace;
-  box-shadow: 0px 0px 3px black;
+  box-shadow: 0px 0px 3px rgba(255, 28, 119, 0.9);
   border-radius: 3px 0px 0px 3px;
 }
 .query-label:hover {
@@ -167,13 +192,13 @@
   text-align: center;
   font-family: "video game", monospace;
   font-weight: 900;
-  width: 65%;
+  width: 40%;
   height: 25px;
-  padding: 5px 12px;
-  font-size: 13px;
-  color: rgb(179, 111, 193);
+  padding: 2px;
+  font-size: 10px;
+  color: rgb(201, 27, 120);
   line-height: normal;
-  background-color: rgba(28, 17, 17, 0.75);
+  background-color: rgba(194, 128, 29, 0.75);
   background-image: none;
   border: 1px solid black;
   border-radius: 0px 3px 3px 0px;
@@ -184,7 +209,7 @@
   background-color: rgb(215, 154, 130);
   outline: 0;
   color: black;
-  box-shadow: 0 0 8px rgb(84, 80, 139), inset 0 0 8px rgba(211, 255, 33, 0.8);
+  box-shadow: 0 0 8px rgb(84, 80, 139), inset 0 0 5px rgba(211, 255, 33, 0.8);
 }
 
 .create-button-col {
@@ -224,6 +249,41 @@
     rgb(255, 255, 255) 25%,
     rgba(255, 192, 203, 0.95)
   );
+}
+
+.search-content {
+  width: 70%;
+  min-height: 30vh;
+  max-height: max-content;
+  vertical-align: top;
+  display: inline-block;
+  margin: 0px;
+  padding: 5px;
+  text-align: center;
+}
+.search-loading {
+  background-image: radial-gradient(
+      circle,
+      rgba(209, 214, 210, 0.01) 0%,
+      rgba(209, 214, 210, 0.99) 90%
+    ),
+    url(../images/dolly-zoom-jaws.gif);
+  background-size: 100% 100%;
+  text-shadow: 1px -1px 1px rgba(25, 25, 46, 0.9),
+    0px 0px 0.1em rgba(33, 255, 225, 0.8), 1px 0 0.1em rgb(220, 42, 255);
+  margin: 0px 0px 0px 1%;
+  width: 69%;
+  cursor: default;
+  min-height: 30vh;
+  max-height: max-content;
+  padding-top: 11vh;
+  font-family: "video game", monospace;
+  font-style: italic;
+  font-size: 20px;
+  color: rgb(205, 35, 126);
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
 }
 
 .content-table {

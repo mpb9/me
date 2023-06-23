@@ -1,39 +1,89 @@
 <div class="page">
   <div class="title-row">Movies</div>
-  <div class="sub-pages">
-    <div class="sub-page-row">
-      <div class="sub-title">
-        <select (change)="changeQueryType($event)">
-          <option value="discover">Discover</option>
-          <option value="search">Search</option>
-        </select>
-        <select (change)="">
-          <option value="discover">Discover</option>
-          <option value="search">Search</option>
-        </select>
-      </div>
-      <div
-        class="query-content"
-        style="text-align: center"
-        *ngIf="queryType === 'discover'"
+  <div class="header-row">
+    <select
+      class="header-select"
+      title="Query Options"
+      [ngClass]="{
+        'header-select-active': window === 'search' || window === 'discover'
+      }"
+      (change)="changeWindow($event)"
+      (dblclick)="window = queriers.value"
+      #queriers
+    >
+      <option
+        [ngClass]="{ 'option-selected': queriers.value === 'search' }"
+        value="search"
       >
-        <div class="query-row" style="width: 90%; margin: 0px 5% 5px 5%">
-          Sort by:
-          <select (change)="changeSortParam($event)">
-            <option value="popularity">Popularity</option>
-            <option value="vote_average">Rating</option>
-            <option value="release_date">Release Date</option>
-            <option value="revenue">Revenue</option>
-            <option value="vote_count"># of Ratings</option>
-          </select>
-          Order by:
-          <select (change)="changeSortOrder($event)">
-            <option value="desc">Descending</option>
-            <option value="asc">Ascending</option>
-          </select>
-          <button class="go-button" (click)="discover()">Discover</button>
+        Search
+      </option>
+      <option
+        [ngClass]="{ 'option-selected': queriers.value === 'discover' }"
+        value="discover"
+      >
+        Discover
+      </option>
+    </select>
+    <select
+      class="header-select"
+      title="My Stuff"
+      [ngClass]="{
+        'header-select-active': window === 'lists' || window === 'watch'
+      }"
+      (change)="changeWindow($event)"
+      (dblclick)="window = myStuff.value"
+      #myStuff
+    >
+      <option
+        [ngClass]="{ 'option-selected': myStuff.value === 'lists' }"
+        value="lists"
+      >
+        Lists
+      </option>
+      <option
+        [ngClass]="{ 'option-selected': myStuff.value === 'watch' }"
+        value="watch"
+      >
+        Watchlist
+      </option>
+    </select>
+  </div>
+  <div class="content">
+    <div class="query-content">
+      <button class="go-button" (click)="submitQuery()">SEARCH</button>
+      <div class="sort-row">
+        <div class="sort">
+          <button class="sort-btn">
+            {{ sort_display }}
+          </button>
+          <div class="sort-content">
+            <div
+              *ngFor="let param of sort_options.params"
+              (click)="sort.param = param.value; sort_display = param.display_1"
+            >
+              {{ param.display_2 }}
+            </div>
+          </div>
         </div>
-        <div class="query-row" *ngFor="let param of current_discover.params">
+        <div class="sort">
+          <button class="sort-btn" style="min-width: 60px">
+            {{ order_display }}
+          </button>
+          <div class="sort-content" style="width: 60px">
+            <div
+              *ngFor="let order of sort_options.orders"
+              (click)="sort.order = order.value; order_display = order.display"
+            >
+              {{ order.display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="window === 'discover'">
+        <div
+          class="query-row"
+          *ngFor="let param of curr_discover.params; let i = index"
+        >
           <div class="query-label" (click)="removeParam(param)">
             {{ param[0] }}
           </div>
@@ -44,26 +94,51 @@
             [(ngModel)]="param[1]"
           />
         </div>
+      </div>
+      <div *ngIf="window === 'search'">
         <div class="query-row">
-          Add Param:
-          <select (change)="addParam($event)">
-            <option value="include_video">Video</option>
-            <option value="language">Language</option>
-            <option value="region">Region</option>
-            <option value="release_date_gte">Release Date (gte)</option>
-            <option value="release_date_lte">Release Date (lte)</option>
-            <option value="vote_average_gte">Rating (gte)</option>
-            <option value="vote_average_lte">Rating (lte)</option>
-            <option value="vote_count_gte"># of Ratings (gte)</option>
-            <option value="vote_count_lte"># of Ratings (lte)</option>
-            <option value="with_origin_country">Origin Country</option>
-            <option value="with_people">People</option>
-            <option value="with_runtime_gte">Runtime (gte)</option>
-            <option value="with_runtime_lte">Runtime (lte)</option>
-            <option value="year">Year</option>
-          </select>
+          <input
+            class="query-input"
+            style="
+              width: 100%;
+              background-color: rgba(255, 220, 62, 0.75);
+              margin: 3px 0px;
+              height: 30px;
+              font-size: 12px;
+              border-radius: 0px;
+            "
+            placeholder="??????????"
+            type="text"
+            [(ngModel)]="curr_movieSearch.query"
+          />
+        </div>
+        <div class="query-row">
+          <div class="query-label" (click)="curr_movieSearch.language = ''">
+            language
+          </div>
+          <input
+            class="query-input"
+            placeholder=""
+            type="text"
+            [(ngModel)]="curr_movieSearch.language"
+          />
+        </div>
+        <div class="query-row">
+          <div class="query-label" (click)="curr_movieSearch.year = null">
+            year
+          </div>
+          <input
+            class="query-input"
+            placeholder=""
+            type="text"
+            [(ngModel)]="curr_movieSearch.year"
+          />
         </div>
       </div>
     </div>
+    <div class="search-content" *ngIf="!searching">
+      <app-movies-results></app-movies-results>
+    </div>
+    <div class="search-loading" *ngIf="searching">loading</div>
   </div>
 </div>

@@ -1,31 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from './movies.service';
-import { Discover, MovieSearch, PersonSearch, Sort } from './movie.model';
+import {
+  Discover,
+  MovieSearch,
+  PersonSearch,
+  Sort,
+  SORT_OPTIONS,
+} from './movie.model';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['../favs.component.css'],
+  styleUrls: ['../fav.css'],
 })
 export class MoviesComponent implements OnInit {
-  queryType = 'discover';
-  current_sort!: Sort;
-  current_discover!: Discover;
-  current_movieSearch!: MovieSearch;
+  searched = false;
+  searching = false;
+  window = 'search';
+  sort_options = SORT_OPTIONS;
+  sort!: Sort;
+  sort_display = 'popular';
+  order_display = 'high ⇧';
+  curr_discover!: Discover;
+  curr_movieSearch!: MovieSearch;
   currrent_personSearch!: PersonSearch;
 
   constructor(private movieService: MoviesService) {}
 
   ngOnInit() {
-    this.current_discover = this.movieService.initialDiscover();
+    this.movieService.getBasicResults();
+
+    this.curr_discover = this.movieService.initialDiscover();
     this.movieService.discoverChanged.subscribe((discover: Discover) => {
-      this.current_discover = discover;
+      this.curr_discover = discover;
     });
 
-    this.current_movieSearch = this.movieService.initialMovieSearch();
+    this.curr_movieSearch = this.movieService.initialMovieSearch();
     this.movieService.movieSearchChanged.subscribe(
       (movieSearch: MovieSearch) => {
-        this.current_movieSearch = movieSearch;
+        this.curr_movieSearch = movieSearch;
       }
     );
 
@@ -36,51 +49,35 @@ export class MoviesComponent implements OnInit {
       }
     );
 
-    this.current_sort = this.movieService.initialSort();
+    this.sort = this.movieService.initialSort();
     this.movieService.sortChanged.subscribe((sort: Sort) => {
-      this.current_sort = sort;
+      this.sort = sort;
     });
   }
 
-  changeQueryType(event: any) {
-    this.queryType = event.target.value;
-  }
-
-  changeSortParam(event: any) {
-    this.current_sort.param = event.target.value;
-    console.log(this.current_sort);
-  }
-
-  changeSortOrder(event: any) {
-    this.current_sort.order = event.target.value;
-    console.log(this.current_sort);
-  }
-
-  addParam(event: any) {
-    this.current_discover.params.push([event.target.value, '']);
-    this.movieService.discoverChanged.emit(this.current_discover);
-    console.log(this.current_discover);
+  changeWindow(event: any) {
+    this.window = event.target.value;
   }
 
   removeParam(param: any[]) {
-    if (this.current_discover.params.includes(param)) {
-      this.current_discover.params.splice(
-        this.current_discover.params.indexOf(param),
+    if (this.curr_discover.params.includes(param)) {
+      this.curr_discover.params.splice(
+        this.curr_discover.params.indexOf(param),
         1
       );
     }
-    this.movieService.discoverChanged.emit(this.current_discover);
-    console.log(this.current_discover);
+    this.movieService.discoverChanged.emit(this.curr_discover);
+    console.log(this.curr_discover);
   }
 
-  countries() {
-    console.log(this.movieService.countries());
-  }
-  discover() {
-    const include_video = false;
-    const sort_by = 'popularity';
-    const order_by = 'desc';
-
-    this.movieService.getDiscover();
+  async submitQuery() {
+    this.searching = true;
+    if (this.window === 'discover') {
+      await this.movieService.getDiscover(this.curr_discover);
+    } else if (this.window === 'search') {
+      await this.movieService.getMovieSearch(this.curr_movieSearch);
+    }
+    this.searching = false;
+    this.searched = true;
   }
 }
