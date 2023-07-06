@@ -7,6 +7,8 @@ import {
   Sort,
   SORT_OPTIONS,
 } from './movie.model';
+import { MyMoviesService } from './my-movies.service';
+import { CustomMethodService } from 'src/app/shared/custom-method.service';
 
 @Component({
   selector: 'app-movies',
@@ -25,7 +27,10 @@ export class MoviesComponent implements OnInit {
   curr_movieSearch!: MovieSearch;
   currrent_personSearch!: PersonSearch;
 
-  constructor(private movieService: MoviesService) {}
+  constructor(
+    private movieService: MoviesService,
+    private myMovieService: MyMoviesService
+  ) {}
 
   ngOnInit() {
     this.movieService.getBasicResults();
@@ -53,10 +58,6 @@ export class MoviesComponent implements OnInit {
     this.movieService.sortChanged.subscribe((sort: Sort) => {
       this.sort = sort;
     });
-  }
-
-  changeWindow(event: any) {
-    this.window = event.target.value;
   }
 
   removeParam(param: any[]) {

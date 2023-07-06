@@ -13,6 +13,8 @@ import { MoviesComponent } from './favs/movies/movies.component';
 import { FavsComponent } from './favs/favs.component';
 import { FormsModule } from '@angular/forms';
 import { MoviesResultsComponent } from './favs/movies/movies-results/movies-results.component';
+import { WatchlistComponent } from './favs/movies/watchlist/watchlist.component';
+import { MovieListsComponent } from './favs/movies/movie-lists/movie-lists.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { MoviesResultsComponent } from './favs/movies/movies-results/movies-resu
     MoviesComponent,
     FavsComponent,
     MoviesResultsComponent,
+    WatchlistComponent,
+    MovieListsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

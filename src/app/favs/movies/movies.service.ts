@@ -11,6 +11,7 @@ import {
 } from './movie.model';
 import { CustomMethodService } from 'src/app/shared/custom-method.service';
 import axios from 'axios';
+import { MyMoviesService } from './my-movies.service';
 
 const TMDB_AUTH =
   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjY4NTc3ZjI5MWM3NTkzY2M0YjE1ZmMxNDhkZTZkNCIsInN1YiI6IjY0ODM1MGFjZTM3NWMwMDExYzdmM2VlYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ThE_Z-h9XD9hq3X3KRP9epFqrSnigE7UtUq2fQ-yo-o';
@@ -37,7 +38,10 @@ export class MoviesService {
   movieSearchChanged = new EventEmitter<MovieSearch>();
   personSearchChanged = new EventEmitter<PersonSearch>();
 
-  constructor(private customMethod: CustomMethodService) {}
+  constructor(
+    private customMethod: CustomMethodService,
+    private myMovieService: MyMoviesService
+  ) {}
 
   async getDiscover(discover: Discover) {
     this.discover = discover;
@@ -83,6 +87,7 @@ axios
   }
 
   async getBasicResults() {
+    await this.myMovieService.initMyData();
     await this.resetResults();
     await axios
       .request({
@@ -94,7 +99,7 @@ axios
           page: '1',
           'primary_release_date.lte': this.customMethod.today(),
           sort_by: 'primary_release_date.desc',
-          'vote_count.gte': '15',
+          'vote_count.gte': '30',
         },
         headers: TMDB_HEADERS,
       })
@@ -165,8 +170,9 @@ axios
         url: `https://api.themoviedb.org/3/movie/${id}`,
         headers: TMDB_HEADERS,
       })
-      .then((response) => {
+      .then(async (response) => {
         this.movie_results.push(response.data);
+        await this.myMovieService.pushCurrentMovie(response.data);
       })
       .catch((error: any) => console.log(error));
   }
@@ -174,6 +180,7 @@ axios
   async resetResults() {
     this.movie_results = [];
     this.result_ids = [];
+    await this.myMovieService.clearCurrentMovies();
     this.movieResultsChanged.emit(this.movie_results);
   }
 

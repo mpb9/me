@@ -7,6 +7,7 @@
   margin: 0px 2% 5px 2%;
   padding: 0px;
   background-color: lavender;
+  border: 1.5px solid lavender;
 }
 
 .movie-info {
@@ -19,29 +20,130 @@
 .movie-title {
   text-align: center;
   width: 100%;
-  color: mediumorchid;
+  padding: 0px 2px;
+  color: rgb(201 27 120);
   font-size: 16px;
-  background-color: darkslateblue;
+  background-color: rgb(29 15 3);
   line-height: 1.5;
+  text-shadow: -0.4px -0.2px rgb(243 219 99);
 }
+.movie-title:hover {
+  color: rgb(243 219 99);
+  text-shadow: -2px -1px 1px rgb(29 15 3);
+  cursor: pointer;
+  background-color: rgb(201 27 120);
+}
+
 .movie-subtitle {
-  background-color: mediumorchid;
+  background-color: rgb(201 27 120);
   padding: 1px 0px 0px 0px;
   display: flex;
 }
+.not-watched {
+  margin: -1.1px 0.5% 0px 0%;
+  width: 5.5%;
+  vertical-align: bottom;
+  background-image: url(../../../images/add.png),
+    radial-gradient(rgb(173, 255, 191) 40%, transparent);
+  background-repeat: no-repeat;
+  background-size: 20px 14px;
+}
+.not-watched:hover {
+  background-image: url(../../../images/add.png),
+    radial-gradient(rgb(63, 246, 106) 100%, transparent);
+  cursor: pointer;
+}
+.on-watchlist {
+  margin: -1.7px 0% 0px 0%;
+  width: 6%;
+  vertical-align: bottom;
+  background-image: url(../../../images/eye.png);
+  background-repeat: no-repeat;
+  background-size: 19px 23px;
+}
+.on-watchlist:hover {
+  background-image: radial-gradient(
+      rgba(255, 0, 47, 0.66) 60%,
+      rgb(29 15 3) 40%
+    ),
+    url(../../../images/eye.png);
+  cursor: pointer;
+}
+.watched {
+  margin: 0px;
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.watched-img {
+  margin: 0px 0% 0px 5%;
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+  background-image: url(../../../images/check.png);
+  background-repeat: no-repeat;
+  background-size: 14px 15px;
+}
+.my-rating {
+  display: inline-block;
+  margin: 0px;
+  padding-left: 2px;
+  color: #f09dff;
+  text-align: left;
+  font-size: 13px;
+  font-style: normal;
+  text-shadow: 0px 1px 1px rgb(29 15 3), 1px 1px 0.1em rgb(44 232 58),
+    0 0 0.2em #fae6f9;
+  line-height: 1;
+}
+.my-rank {
+  display: inline-block;
+  margin: 0px;
+  padding-left: 10px;
+  color: rgb(54 19 95);
+  text-align: left;
+  font-size: 12px;
+  font-style: normal;
+  text-shadow: -1px 0px 1px rgb(255 255 255), 1px 1px 0.1em rgb(200 138 206),
+    0 0 0.2em;
+}
 .movie-release {
   text-align: center;
-  padding-left: 12px;
+  padding-left: 2px;
   font-size: 12px;
   font-style: italic;
   color: lavender;
   line-height: 1.1;
-  margin: 0px 0px 0px 25%;
-  width: 50%;
+  margin: 0px;
+  width: 40%;
   display: inline-block;
 }
-.movie-overview {
+.movie-ratings {
+  color: rgb(29 15 3);
+  display: inline-block;
+  width: 23%;
+  font-size: 10px;
+  padding: 0px 5px;
+  margin: 0px 1% 0px 1%;
+  font-style: italic;
+  text-align: right;
+  vertical-align: bottom;
+  line-height: 1.1;
+}
+.movie-ratings > b {
+  color: #f3db63;
+  text-align: left;
   font-size: 12px;
+  font-style: normal;
+  text-shadow: 0px 1px 1px rgb(29 15 3), 1px 1px 0.1em rgb(232 91 44),
+    0 0 0.2em lavender;
+  margin-right: 2px;
+  line-height: 1;
+}
+
+.movie-overview {
+  font-size: 11.5px;
   padding: 2px 5px;
   color: black;
 }
@@ -54,93 +156,42 @@
   padding: 0px;
   display: inline-block;
   margin: 0px;
-  text-align: center;
-}
-.movie-ratings {
-  color: darkslateblue;
-  display: inline-block;
-  width: 23%;
-  font-size: 10px;
-  padding: 0px 5px;
-  margin: 0px 1% 0px 1%;
-  font-style: italic;
-  text-align: right;
-  vertical-align: bottom;
-  line-height: 1.1;
-}
-.movie-ratings > b {
-  color: mediumorchid;
   text-align: left;
-  font-size: 12px;
-  font-style: normal;
-  text-shadow: 0px 1px 1px rgb(255, 255, 255),
-    1px 1px 0.1em rgba(211, 94, 26, 0.9), 0 0 0.2em yellow;
-  margin-right: 2px;
-  line-height: 1;
+  padding-top: 3px;
 }
-
-.content-table {
-  display: inline-block;
-  width: 90%;
-  padding: 15px 0px 0px 5%;
-  height: max-content;
-  margin: 0px;
-  overflow-x: auto;
-  overflow-y: scroll;
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
-.content-table::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 2px solid rgba(56, 216, 72, 0.95);
-  background-color: rgba(3, 3, 3, 0.9);
-}
-th {
-  text-align: center;
-  padding: 5px 10px;
-  color: rgba(56, 216, 72, 0.95);
-  font-family: "sci-fi header", monospace;
-  border: 2px solid rgba(56, 216, 72, 0.95);
-  border-bottom: 2px solid rgba(56, 216, 72, 0.95);
-  cursor: pointer;
-}
-th:hover {
-  background-color: rgba(56, 216, 72, 0.95);
-  color: rgba(3, 3, 3, 0.9);
-}
-tr:hover > td {
-  background-color: rgba(255, 83, 40, 0.95);
-  color: rgba(3, 3, 3, 0.9);
-  cursor: not-allowed;
-}
-tr:hover > .content-data-2 {
-  background-color: rgba(56, 216, 72, 0.95);
-  color: rgba(3, 3, 3, 0.9);
-  cursor: pointer;
-}
-tr:hover > .content-copy {
-  background-color: rgba(255, 241, 43, 0.95);
-  color: rgba(3, 3, 3, 0.9);
-  cursor: copy;
-}
-td:hover {
-  text-shadow: 1px -1px 3px rgb(187 110 179);
-  font-style: italic;
-}
-
-td {
-  text-align: center;
-  padding: 5px 10px;
-  color: rgb(255, 217, 224);
+.option-label {
+  position: relative;
+  text-align: right;
+  color: rgb(84, 80, 139);
+  text-shadow: 1px -1px 1px rgb(187 110 179 / 90%),
+    0px 0px 0.1em rgb(144 255 33 / 80%), 1px 0 0.1em rgb(42 206 255);
   font-weight: 900;
-  border: 1px solid rgba(255, 217, 224, 0.95);
-  background-color: rgba(50, 44, 44, 0.9);
-  max-width: 40vw;
-  word-wrap: break-word;
+  display: inline-block;
+  width: 45%;
+  font-size: 16px;
+  font-family: "sci-fi title", monospace;
+}
+.text-edit {
+  margin-left: 2%;
+  display: inline-block;
+  font-family: "sci-fi header", monospace;
+  font-weight: 900;
+  width: 15%;
+  text-align: center;
+  height: 20px;
+  padding: 2px 4px;
+  font-size: 12px;
+  color: rgb(84, 80, 139);
+  line-height: normal;
+  background-color: rgba(255, 220, 220, 0.5);
+  background-image: none;
+  border: 1px solid gray;
+  border-radius: 3px;
+  box-shadow: 0 0 0.1em rgb(42 206 255);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  margin-top: 2px;
+}
+.text-edit:hover {
+  border-color: rgb(42 206 255);
+  box-shadow: 0 0 0.1em rgb(42 206 255);
 }

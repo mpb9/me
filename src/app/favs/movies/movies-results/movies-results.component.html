@@ -1,14 +1,64 @@
 <div class="movie-row" *ngFor="let movie of movies; index as i">
   <div class="movie-info">
-    <div class="movie-title">{{ movie.title }}</div>
-    <div class="movie-subtitle">
-      <div class="movie-release">{{ movie.release_date }}</div>
+    <div class="movie-title" (click)="showOptions[i] = !showOptions[i]">
+      {{ movie.title }}
+    </div>
+    <div class="movie-subtitle" *ngIf="!myMovieInfo[i].watched">
+      <div class="movie-release" style="margin-left: 30%">
+        {{ movie.release_date }}
+      </div>
+      <div class="movie-ratings" style="width: 22%">
+        <b>{{ movie.vote_average.toFixed(1) }}</b> ({{ movie.vote_count }})
+      </div>
+      <div
+        class="not-watched"
+        *ngIf="!myMovieInfo[i].watchlist"
+        (click)="addToWatchlist(movie.id)"
+      ></div>
+      <div
+        class="on-watchlist"
+        *ngIf="myMovieInfo[i].watchlist"
+        (click)="removeFromWatchlist(movie.id)"
+      ></div>
+    </div>
+    <div class="movie-subtitle" *ngIf="myMovieInfo[i].watched">
+      <div class="watched">
+        <div class="watched-img"></div>
+        <div class="my-rating">
+          {{
+            myMovieInfo[i].rating === 0
+              ? "x.x"
+              : myMovieInfo[i].rating.toFixed(1)
+          }}
+        </div>
+        <div class="my-rank">
+          #{{
+            myMovieInfo[i].rank.rank === 0 ? "na" : myMovieInfo[i].rank.rank
+          }}
+        </div>
+      </div>
+      <div class="movie-release">
+        {{ movie.release_date }}
+      </div>
       <div class="movie-ratings">
         <b>{{ movie.vote_average.toFixed(1) }}</b> ({{ movie.vote_count }})
       </div>
     </div>
-    <div class="movie-options">~options~</div>
-    <div class="movie-overview">{{ movie.overview }}</div>
+    <div class="movie-options" *ngIf="showOptions[i]">
+      <div class="option-label">rank:</div>
+      <input type="text" [value]="myMovieInfo[i].rank.rank" class="text-edit" />
+      <div class="option-label">tier:</div>
+      <input type="text" [value]="myMovieInfo[i].rank.tier" class="text-edit" />
+      <div class="option-label">rating:</div>
+      <input type="text" [value]="myMovieInfo[i].rating" class="text-edit" />
+      <br />
+      watched: {{ myMovieInfo[i].watched }}
+      <br />
+      watchlist: {{ myMovieInfo[i].watchlist }}
+    </div>
+    <div class="movie-overview" *ngIf="!showOptions[i]">
+      {{ movie.overview }}
+    </div>
   </div>
   <img
     class="movie-poster"

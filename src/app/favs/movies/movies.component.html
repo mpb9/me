@@ -1,55 +1,66 @@
 <div class="page">
   <div class="title-row">Movies</div>
   <div class="header-row">
-    <select
+    <div
       class="header-select"
-      title="Query Options"
       [ngClass]="{
-        'header-select-active': window === 'search' || window === 'discover'
+        'header-select-active': window === 'search'
       }"
-      (change)="changeWindow($event)"
-      (dblclick)="window = queriers.value"
-      #queriers
+      (click)="window = 'search'"
     >
-      <option
-        [ngClass]="{ 'option-selected': queriers.value === 'search' }"
-        value="search"
-      >
-        Search
-      </option>
-      <option
-        [ngClass]="{ 'option-selected': queriers.value === 'discover' }"
-        value="discover"
-      >
-        Discover
-      </option>
-    </select>
-    <select
+      search
+    </div>
+    <div
       class="header-select"
-      title="My Stuff"
       [ngClass]="{
-        'header-select-active': window === 'lists' || window === 'watch'
+        'header-select-active': window === 'discover'
       }"
-      (change)="changeWindow($event)"
-      (dblclick)="window = myStuff.value"
-      #myStuff
+      (click)="window = 'discover'"
     >
-      <option
-        [ngClass]="{ 'option-selected': myStuff.value === 'lists' }"
-        value="lists"
-      >
-        Lists
-      </option>
-      <option
-        [ngClass]="{ 'option-selected': myStuff.value === 'watch' }"
-        value="watch"
-      >
-        Watchlist
-      </option>
-    </select>
+      discover
+    </div>
+    <div
+      class="header-select"
+      [ngClass]="{
+        'header-select-active': window === 'watch'
+      }"
+      (click)="window = 'watch'"
+    >
+      watch
+    </div>
+    <div
+      class="header-select"
+      [ngClass]="{
+        'header-select-active': window === 'watched'
+      }"
+      (click)="window = 'watched'"
+    >
+      seen
+    </div>
+    <div
+      class="header-select"
+      [ngClass]="{
+        'header-select-active': window === 'rank'
+      }"
+      (click)="window = 'rank'"
+    >
+      ranks
+    </div>
+    <div
+      class="header-select"
+      [ngClass]="{
+        'header-select-active': window === 'lists'
+      }"
+      (click)="window = 'lists'"
+    >
+      lists
+    </div>
   </div>
   <div class="content">
-    <div class="query-content">
+    <div
+      class="query-content"
+      *ngIf="window === 'search' || window === 'discover'"
+    >
       <button class="go-button" (click)="submitQuery()">SEARCH</button>
       <div class="sort-row">
         <div class="sort">

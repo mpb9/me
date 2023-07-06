@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="home-page">
+  <div class="title-row">user: <b>MICHAEL_BEEBE</b></div>
+  <div class="dir-row" *ngIf="expandFavs !== 'exit?'">>dir</div>
+  <div class="sub-row" *ngIf="expandFavs !== 'exit?'">
+    to-do <b class="go" routerLink="to_do">go?</b>
+  </div>
+  <div class="sub-row" *ngIf="expandFavs !== 'exit?'">
+    links <b class="go" routerLink="links">go?</b>
+  </div>
+  <div class="sub-row" *ngIf="expandFavs !== 'exit?'">
+    credentials <b class="go" routerLink="credentials">go?</b>
+  </div>
+  <div class="sub-row">
+    favs
+    <b
+      class="go"
+      (click)="expandFavs = expandFavs === 'enter?' ? 'exit?' : 'enter?'"
+      >{{ expandFavs }} </b
+    ><b class="go" routerLink="favs">go?</b>
+  </div>
+  <div
+    class="dir-row"
+    style="font-size: 20px; padding-left: 25px"
+    *ngIf="expandFavs === 'exit?'"
+  >
+    \favs>dir
+  </div>
+  <div class="sub-sub-row" *ngIf="expandFavs === 'exit?'">
+    movies <b class="go" routerLink="favs/movies">go?</b>
+  </div>
+  <div class="sub-sub-row" *ngIf="expandFavs === 'exit?'">
+    tv <b class="go" routerLink="favs/tv">go?</b>
+  </div>
+  <div class="sub-sub-row" *ngIf="expandFavs === 'exit?'">
+    music <b class="go" routerLink="favs/music">go?</b>
+  </div>
+</div>
